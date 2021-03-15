@@ -37,7 +37,9 @@ namespace ConsoleApp1
             foreach(var number in query)
             {
                 Console.WriteLine(number);
+                
             }
+            
         }
     }
 }
