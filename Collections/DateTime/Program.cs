@@ -13,7 +13,11 @@ namespace DateTime
 
         static void CommonDateTimeScenarios()
         {
-
+            var offset = TimeSpan.FromHours(-11);
+            var startDate = DateTimeOffset.UtcNow.ToOffset(DateTimeOffset.Now.Offset);
+            var endDate = new System.DateTime(2020,3,23,10,55,55);
+           var result =  startDate.CompareTo(endDate);
+            Console.WriteLine(startDate.ToString("O"));
         }
 
         static void  DateCalculations()
