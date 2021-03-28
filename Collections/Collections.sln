@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullableProject", "Nullable
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonNullableReferenceTypes", "NonNullableReferenceTypes\NonNullableReferenceTypes.csproj", "{E37B6302-8D28-49E7-8389-179CD5A16D14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling", "ExceptionHandling\ExceptionHandling.csproj", "{03D00880-D41B-41D3-A80A-299BADA1EC13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncProgramming", "AsyncProgramming\AsyncProgramming.csproj", "{B437EB7C-0E98-471F-B8E3-6E9E1990BCA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{E37B6302-8D28-49E7-8389-179CD5A16D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E37B6302-8D28-49E7-8389-179CD5A16D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E37B6302-8D28-49E7-8389-179CD5A16D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D00880-D41B-41D3-A80A-299BADA1EC13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D00880-D41B-41D3-A80A-299BADA1EC13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D00880-D41B-41D3-A80A-299BADA1EC13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D00880-D41B-41D3-A80A-299BADA1EC13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B437EB7C-0E98-471F-B8E3-6E9E1990BCA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B437EB7C-0E98-471F-B8E3-6E9E1990BCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B437EB7C-0E98-471F-B8E3-6E9E1990BCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B437EB7C-0E98-471F-B8E3-6E9E1990BCA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
