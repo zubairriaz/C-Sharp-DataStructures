@@ -11,7 +11,7 @@ namespace DataStructures
             //MultidimensionalArray marray = new MultidimensionalArray();
             //marray.GetTransportEnums();
             int[] array = new[] { -11, 11, 2, -2, 9, 8, 7, 6 };
-            var returnedarray = InsertionSortAlgorithm.InsertionSortAlgoMethod<int>(array);
+            var returnedarray = QuickSortAlgo.QuickSortAlgorithm(array);
 
            foreach(var item in returnedarray)
             {
