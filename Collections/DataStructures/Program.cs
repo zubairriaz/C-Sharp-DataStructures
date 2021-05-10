@@ -5,6 +5,8 @@ using DataStructures.LinkedList;
 using DataStructures.SortingAlgos;
 using DataStructures.Stack;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DataStructures
 {
