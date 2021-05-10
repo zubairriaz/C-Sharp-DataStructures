@@ -1,6 +1,9 @@
 ﻿using DataStructures.Arrays;
+using DataStructures.HashSets;
+using DataStructures.HashtablePractises;
 using DataStructures.LinkedList;
 using DataStructures.SortingAlgos;
+using DataStructures.Stack;
 using System;
 
 namespace DataStructures
@@ -19,7 +22,17 @@ namespace DataStructures
             //     Console.WriteLine(item);
             // }
 
-            LinkedListPractise.LinkedListMethod();
+            //LinkedListPractise.LinkedListMethod();
+            //var reversed = StackPractise.ReverseWord("Zubair");
+
+            //Console.WriteLine(reversed);
+
+            //var towerofHinoi = new Hinoitower(2);
+            //towerofHinoi.Start();
+            //Console.WriteLine(towerofHinoi.getStats());
+            //HashTablePractise.HashTableFunctions();
+            //HashSetDemo.HashSetDemoMain();
+            SortedSetDemo.SortedSetDemoMain();
         }
     }
 }
