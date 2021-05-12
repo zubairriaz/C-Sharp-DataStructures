@@ -12,6 +12,7 @@ namespace DataStructures.BinarySearchTrees
             Children = new List<TreeNode<T>>() { null, null };
         }
 
+        public BinaryTreeNode<T> Parent { get; set; }
         public BinaryTreeNode<T> LeftChild { get { return (BinaryTreeNode<T>)Children[0]; } set { Children[0] = value; } }
         public BinaryTreeNode<T> RightChild { get { return (BinaryTreeNode<T>)Children[1]; } set { Children[1] = value; } }
 
