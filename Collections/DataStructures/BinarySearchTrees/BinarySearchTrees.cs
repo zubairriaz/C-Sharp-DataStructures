@@ -35,7 +35,6 @@ namespace DataStructures.BinarySearchTrees
         {
 
             // First find the parent for the node to add. 2nd add the node to the right or left of the Parent appropriately.
-            // First find the parent for the node to add. 2nd add the node to the right or left of the Parent appropriately.
             BinaryTreeNode<T> Parent = GetParentForNewNode(data);
             BinaryTreeNode<T> NewNode = new BinaryTreeNode<T>()
             {

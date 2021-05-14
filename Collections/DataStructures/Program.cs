@@ -1,4 +1,5 @@
 ﻿using DataStructures.Arrays;
+using DataStructures.BinarySearchTrees;
 using DataStructures.HashSets;
 using DataStructures.HashtablePractises;
 using DataStructures.LinkedList;
@@ -34,7 +35,7 @@ namespace DataStructures
             //Console.WriteLine(towerofHinoi.getStats());
             //HashTablePractise.HashTableFunctions();
             //HashSetDemo.HashSetDemoMain();
-            SortedSetDemo.SortedSetDemoMain();
+            BST_Visualization.BST_Visualization_Main();
         }
     }
 }
