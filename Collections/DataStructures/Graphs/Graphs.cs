@@ -40,6 +40,83 @@ namespace DataStructures.Graphs
             }
         }
 
+        public Node<T> AddNode(T value)
+        {
+            Node<T> node = new Node<T>() { Data = value };
+            Nodes.Add(node);
+            UpdateIndices();
+            return node;
+        }
+
+        public void RemoveNode(Node<T> node)
+        {
+            Nodes.Remove(node);
+            UpdateIndices();
+            foreach (var item in Nodes)
+            {
+                RemoveEdge(item, node);
+            }
+        }
+
+        private void RemoveEdge(Node<T> from, Node<T> to)
+        {
+            var index = from.Neighbours.IndexOf(to);
+            if(index >= 0)
+            {
+                from.Neighbours.RemoveAt(index);
+                if (_isWeighted)
+                {
+                    from.Weights.RemoveAt(index);
+                }
+            }
+        }
+
+        public void AddEdge(Node<T> from , Node<T> to, int weight = 0)
+        {
+            
+            
+                from.Neighbours.Add(to);
+                if (_isWeighted)
+                {
+                    from.Weights.Add(weight);
+                }
+
+            if (!_isDirected)
+            {
+                to.Neighbours.Add(from);
+                if (_isWeighted)
+                {
+                    to.Weights.Add(weight);
+                }
+            }
+            
+        }
+
+        public List<Edge<T>> GetEdges()
+        {
+            var edges = new List<Edge<T>>();
+            foreach (var node in Nodes)
+            {
+                for (var i = 0; i <= node.Neighbours.Count; i++)
+                {
+                    var edge = new Edge<T>()
+                    {
+                        From = node,
+                        To = node.Neighbours[i],
+                        Weight = i < node.Weights.Count ? node.Weights[i] : 0
+                    };
+                    edges.Add(edge);
+                }
+                
+            }
+            return edges;
+        }
+
+        private void UpdateIndices()
+        {
+            int i = 0;
+            Nodes.ForEach(n => n.Index = i++);
+        }
     }
 
     public class Node<T>
