@@ -92,12 +92,118 @@ namespace DataStructures.Graphs
             
         }
 
+        public List<Node<T>> DFS(Node<T> node)
+        {
+            var result = new List<Node<T>>();
+            bool[] isVisited = new bool[Nodes.Count];
+            DFS_Search(node, isVisited, result);
+            return result;
+
+        }
+
+
+        public List<Node<T>> BFS()
+        {
+            var node = Nodes[0];
+            var result = new List<Node<T>>();
+            bool[] isVisited = new bool[Nodes.Count];
+            BFS_Search(node, isVisited, result);
+            return result;
+
+        }
+
+        public List<Edge<T>> MinimumSpanningTreeKurksal()
+        {
+            var edges = GetEdges();
+            edges.Sort((a, b) => a.Weight.CompareTo(b.Weight));
+            Queue<Edge<T>> edgeQueue = new Queue<Edge<T>>(edges);
+            SubSet<T>[] subSets = new SubSet<T>[Nodes.Count];
+            for(var i =0; i < Nodes.Count; i++)
+            {
+                subSets[i] = new SubSet<T>() { Parent = Nodes[i] };
+            }
+
+            var result = new List<Edge<T>>();
+            while(result.Count < Nodes.Count - 1)
+            {
+                var edge = edgeQueue.Dequeue();
+                var nodeFrom = GetRoot(subSets, edge.From);
+                var nodeTo = GetRoot(subSets, edge.To);
+                if(nodeFrom != nodeTo)
+                {
+                    result.Add(edge);
+                    Union(subSets, nodeFrom, nodeTo);
+                }
+            }
+            return result;
+        }
+
+        private void Union(SubSet<T>[] subSets, Node<T> nodeFrom, Node<T> nodeTo)
+        {
+            if (subSets[nodeFrom.Index].Rank > subSets[nodeTo.Index].Rank)
+            {
+                subSets[nodeTo.Index].Parent = nodeFrom;
+            }
+            else if (subSets[nodeTo.Index].Rank > subSets[nodeFrom.Index].Rank)
+            {
+                subSets[nodeFrom.Index].Parent = nodeTo;
+            }
+
+            else
+            {
+                subSets[nodeTo.Index].Parent = nodeFrom;
+                subSets[nodeFrom.Index].Rank++;
+            }
+        }
+
+        private Node<T> GetRoot(SubSet<T>[] subSets, Node<T> from)
+        {
+           if(subSets[from.Index].Parent == from)
+            {
+                return from;
+            }
+
+            return GetRoot(subSets, subSets[from.Index].Parent);
+        }
+
+        private void BFS_Search(Node<T> node, bool[] isVisited, List<Node<T>> result)
+        {
+            Queue<Node<T>> queue = new Queue<Node<T>>();
+            queue.Enqueue(node);
+            while(queue.Count > 0)
+            {
+                var innernode = queue.Dequeue();
+                result.Add(innernode);
+                isVisited[innernode.Index] = true;
+                foreach(var item in innernode.Neighbours)
+                {
+                    if (!isVisited[item.Index])
+                    {
+                        queue.Enqueue(item);
+                    }
+                }
+            }
+        }
+
+        private void DFS_Search(Node<T> node, bool[] isVisited, List<Node<T>> result)
+        {
+            result.Add(node);
+            isVisited[node.Index] = true;
+            foreach(var neighNode in node.Neighbours)
+            {
+                if (!isVisited[neighNode.Index])
+                {
+                    DFS_Search(neighNode, isVisited, result);
+                }
+            }
+        }
+
         public List<Edge<T>> GetEdges()
         {
             var edges = new List<Edge<T>>();
             foreach (var node in Nodes)
             {
-                for (var i = 0; i <= node.Neighbours.Count; i++)
+                for (var i = 0; i <= node.Neighbours.Count - 1; i++)
                 {
                     var edge = new Edge<T>()
                     {
