@@ -17,6 +17,67 @@ namespace DataStructures.Graphs
             _isWeighted = isWeighted;
         }
 
+        public List<Edge<T>> MinimumSpanningTreePrim()
+        {
+
+            int[] minWeight = new int[Nodes.Count];
+            Fill(minWeight, int.MaxValue);
+            minWeight[0] = 0;
+
+            bool[] isInMST = new bool[Nodes.Count];
+            Fill(isInMST, false);
+            List<Edge<T>> result = new List<Edge<T>>();
+            for (int i = 0; i < Nodes.Count - 1; i++)
+            {
+                int minWeightIndex = GetMinimumWeightIndex(
+                    minWeight, isInMST);
+                isInMST[minWeightIndex] = true;
+
+                for (int j = 0; j < Nodes.Count; j++)
+                {
+                    Edge<T> edge = this[minWeightIndex, j];
+                    int weight = edge != null ? edge.Weight : -1;
+                    if (edge != null
+                        && !isInMST[j]
+                        && weight < minWeight[j])
+                    {
+                        
+                        result.Add(edge);
+                        minWeight[j] = weight;
+                    }
+                }
+            }
+
+           
+            return result;
+        }
+
+
+        private void Fill<Q>(Q[] array, Q value)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = value;
+            }
+        }
+
+        private int GetMinimumWeightIndex(int[] weights, bool[] isInMST)
+        {
+            int minValue = int.MaxValue;
+            int minIndex = 0;
+
+            for (int i = 0; i < Nodes.Count; i++)
+            {
+                if (!isInMST[i] && weights[i] < minValue)
+                {
+                    minValue = weights[i];
+                    minIndex = i;
+                }
+            }
+
+            return minIndex;
+        }
+
         public Edge<T> this[int from , int to]
         {
             get

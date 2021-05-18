@@ -57,7 +57,7 @@ namespace DataStructures
 
             var edges = graph.GetEdges();
 
-            foreach (var node in graph.MinimumSpanningTreeKurksal())
+            foreach (var node in graph.MinimumSpanningTreePrim())
             {
                 Console.WriteLine(node);
             }
