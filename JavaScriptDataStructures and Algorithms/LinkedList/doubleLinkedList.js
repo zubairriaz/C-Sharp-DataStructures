@@ -1,7 +1,8 @@
-class Node {
+class DoubleNode {
 	constructor(element) {
-		this.next = undefined;
+		this.previous = undefined;
 		this.element = element;
+		this.next = undefined;
 	}
 }
 
@@ -9,25 +10,31 @@ const defaultEquals = (a, b) => {
 	return a === b;
 };
 
-class LinkedList {
+class DoubleLinkedList {
 	constructor(equalFn = defaultEq) {
 		this.count = 0;
 		this.head = undefined;
+        this.tail = undefined;
 		this.equalFn = equalFn;
 	}
 	push(element) {
-		let node = new Node(element);
+		let node = new DoubleNode(element);
 		let current;
 		if (this.head == null) {
 			this.head = node;
+			node.previous = this.head;
 		} else {
 			current = this.head;
 			while (current.next != null) {
 				current = current.next;
 			}
 			current.next = node;
-			this.count++;
+			node.previous = current;
+            this.tail = node;
+			
 		}
+        this.count++;
+        return this.node;
 	}
 
 	getElement(index) {
@@ -66,26 +73,28 @@ class LinkedList {
 				let previous = this.getElement(index - 1);
 				let current = previous.next;
 				previous.next = current.next;
-                this.count--;
+				this.count--;
 			}
-            return true;
+			return true;
 		} else {
 			return undefined;
 		}
 	}
 
 	insertAt(index, element) {
-		if (index >= 0 && index < this.count && index != null) {
-			let node = new Node(element);
-			if (index == 0) {
-				let current = this.head;
-				node.next = current;
-				this.head = node;
-			} else {
+        console.log(index, this.count);
+		if (index >= 0 && index <= this.count && index != null) {
+			let node = new DoubleNode(element);
+			if (index == 0 || index == this.count) {
+				this.push(element);
+			} 
+            else {
 				let previous = this.getElement(index - 1);
 				let current = previous.next;
 				previous.next = node;
 				node.next = current;
+                current.previous = node;
+				node.previous = previous;
 			}
 			this.count++;
 			return true;
@@ -107,18 +116,20 @@ class LinkedList {
 		let index = this.getIndexOf(element);
 		if (index >= 0) {
 			this.removeAt(index);
-		}else{
-            return undefined;
-        }
-        return true;
+		} else {
+			return undefined;
+		}
+		return true;
 	}
 }
 
-let list = new LinkedList(defaultEquals);
+let list = new DoubleLinkedList(defaultEquals);
 list.push(1);
 list.push(2);
-list.push(4);
+list.insertAt(2,4);
+let node = list.getElement(1);
+console.log(node);
+let previous = node.previous;
+let next = node.next;
+console.log(node.element , previous.element , next.element);
 
-console.log(list.getIndexOf(4) , list.getCount());
-console.log(list.removeElement(4));
-console.log(list.getIndexOf(4), list.getCount());
