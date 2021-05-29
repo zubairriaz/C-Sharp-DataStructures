@@ -1,0 +1,1 @@
+//Variation of linkedList the next pointer of last node instead of undefined points to the head.
