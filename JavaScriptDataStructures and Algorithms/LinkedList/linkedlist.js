@@ -9,7 +9,7 @@ const defaultEquals = (a, b) => {
 	return a === b;
 };
 
-module.exports.LinkedList = class LinkedList {
+class LinkedList {
 	constructor(equalFn = defaultEq) {
 		this.count = 0;
 		this.head = undefined;
@@ -45,7 +45,7 @@ module.exports.LinkedList = class LinkedList {
 		if (element != null) {
 			let current = this.head;
 			let count = 0;
-			while (this.count >= count) {
+			while (this.count >= count && current != null) {
 				if (this.equalFn(current.element, element)) {
 					return count;
 				}
@@ -114,11 +114,12 @@ module.exports.LinkedList = class LinkedList {
 	}
 };
 
-// let list = new LinkedList(defaultEquals);
-// list.push(1);
-// list.push(2);
-// list.push(4);
+let list = new LinkedList(defaultEquals);
+list.push(1);
+list.push(2);
+list.push(4);
 
-// console.log(list.getIndexOf(4) , list.getCount());
-// console.log(list.removeElement(4));
-// console.log(list.getIndexOf(4), list.getCount());
+console.log(list.getIndexOf(4) , list.getCount());
+console.log(list.removeElement(4));
+console.log(list.getIndexOf(4), list.getCount());
+console.log(list);

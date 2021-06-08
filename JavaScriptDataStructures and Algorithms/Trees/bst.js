@@ -6,7 +6,7 @@ class Node {
 	}
 }
 
-class BST {
+module.exports.BST = class BST {
 	constructor() {
 		this.root = null;
 	}
@@ -162,19 +162,19 @@ class BST {
 	}
 }
 
-const trr = new BST();
+// const trr = new BST();
 
-trr.insert(5);
-trr.insert(4);
-trr.insert(3);
-trr.insert(6);
-trr.insert(7);
-const printNode = (value) => console.log(value); // {6}
-// trr.InOrderSearch(printNode);
-// trr.postOrderSearch(printNode);
-//trr.preOrderSearch(printNode)
-// console.log(trr.getMinValue())
-// console.log(trr.getMaxValue())
-//console.log(trr.remove(3))
-console.log(trr);
+// trr.insert(5);
+// trr.insert(4);
+// trr.insert(3);
+// trr.insert(6);
+// trr.insert(7);
+// const printNode = (value) => console.log(value); // {6}
+// // trr.InOrderSearch(printNode);
+// // trr.postOrderSearch(printNode);
+// //trr.preOrderSearch(printNode)
+// // console.log(trr.getMinValue())
+// // console.log(trr.getMaxValue())
+// //console.log(trr.remove(3))
+// console.log(trr);
 
