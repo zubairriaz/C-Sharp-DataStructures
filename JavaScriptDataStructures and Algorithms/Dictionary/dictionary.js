@@ -13,9 +13,9 @@ const stringFnEqual = (item) => {
     return returnValue;
 };
 
-class Dictionary {
-	constructor(stringFnEqual = stringFnEqual) {
-		this.toStrFn = stringFnEqual;
+module.exports.Dictionary= class Dictionary {
+	constructor(stringFn = stringFnEqual) {
+		this.toStrFn = stringFn;
 		this.table = {};
 	}
 
@@ -116,7 +116,7 @@ class ValuePair {
 }
 
 
-let dictionary = new Dictionary(stringFnEqual);
-dictionary.set(0,'first')
-dictionary.set(1,'second')
-dictionary.forEach((key,value)=>console.log(key,value))
+// let dictionary = new Dictionary(stringFnEqual);
+// dictionary.set(0,'first')
+// dictionary.set(1,'second')
+// dictionary.forEach((key,value)=>console.log(key,value))
